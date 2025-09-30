@@ -13,10 +13,10 @@ console.log(process.env.DB_USER, process.env.DB_NAME, process.env.DB_PASSWORD);
 
 // PostgreSQL pool
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: "localhost",
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
+  user: process.env.POSTGRES_USER || 'postgres',
+  host: process.env.POSTGRES_HOST || 'db',  // <-- IMPORTANT
+  database: process.env.POSTGRES_DB || 'mydb',
+  password: process.env.POSTGRES_PASSWORD || 'postgres',
   port: 5432,
 });
 pool.connect((err, client, release) => {

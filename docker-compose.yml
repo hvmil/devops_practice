@@ -11,7 +11,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
+      - "8989:8989"
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -26,10 +26,11 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "${POSTGRES_PORT}:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
 
 volumes:
-  db_data:
+  db_data: 
