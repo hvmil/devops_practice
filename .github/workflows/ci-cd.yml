@@ -30,14 +30,14 @@ jobs:
 
       # Step 4: Build Docker images
       - name: Build frontend image
-        run: docker build -t myusername/frontend:latest ./frontend
+        run: docker build -t hvmil/frontend:latest ./frontend
 
       - name: Build backend image
-        run: docker build -t myusername/backend:latest ./backend
+        run: docker build -t hvmil/backend:latest ./backend
 
       # Step 5: Push Docker images to registry
       - name: Push frontend image
-        run: docker push myusername/frontend:latest
+        run: docker push hvmil/frontend:latest
 
       - name: Push backend image
-        run: docker push myusername/backend:latest
+        run: docker push hvmil/backend:latest
