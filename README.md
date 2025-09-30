@@ -56,7 +56,7 @@ This project demonstrates the following DevOps practices:
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/yourusername/devops-fullstack.git
+git clone https://github.com/hvmil/devops_practice.git
 cd devops-fullstack
 ```
 
