@@ -1,6 +1,6 @@
 # DevOps Full-Stack Project
 
-This project is a **full-stack web application** built with **React**, **Express**, and **PostgreSQL**, designed to help me learn **DevOps concepts**, including **containerization**, **CI/CD**, and **cloud deployment**. The goal is to create an automated workflow from development to deployment.
+This project is a **full-stack web application** built with **React**, **Express**, and **PostgreSQL**, designed to help me learn **DevOps concepts**, including **containerization**, **CI/CD**, and **cloud deployment with AWS**. The goal is to create an automated workflow from development to deployment.
 
 ---
 
