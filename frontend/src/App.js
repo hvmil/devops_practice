@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const BACKEND_URL =
+  process.env.REACT_APP_BACKEND_URL || "http://localhost:8989";
+
 function App() {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState("");
 
   useEffect(() => {
     axios
-      .get("http://localhost:8989/api/items")
+      .get(`${BACKEND_URL}/api/items`)
       .then((res) => setItems(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -15,7 +18,7 @@ function App() {
   const addItem = () => {
     if (!newItem) return;
     axios
-      .post("http://localhost:8989/api/items", { name: newItem })
+      .post(`${BACKEND_URL}/api/items`, { name: newItem })
       .then((res) => setItems([...items, res.data]))
       .catch((err) => console.error(err));
     setNewItem("");
@@ -23,13 +26,12 @@ function App() {
 
   const deleteItem = (id) => {
     axios
-      .delete(`http://localhost:8989/api/items/${id}`)
+      .delete(`${BACKEND_URL}/api/items/${id}`)
       .then(() => {
         setItems(items.filter((item) => item.id !== id));
       })
       .catch((err) => console.error(err));
   };
-
 
   const startEdit = (id) => {
     setItems(
@@ -39,11 +41,10 @@ function App() {
     );
   };
 
-
   const saveEdit = (id) => {
     const item = items.find((i) => i.id === id);
     axios
-      .put(`http://localhost:8989/api/items/${id}`, { name: item.name })
+      .put(`${BACKEND_URL}/api/items/${id}`, { name: item.name })
       .then((res) => {
         setItems(
           items.map((i) =>
@@ -53,7 +54,6 @@ function App() {
       })
       .catch((err) => console.error(err));
   };
-
 
   const confirmDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {

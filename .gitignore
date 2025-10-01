@@ -1,6 +1,8 @@
 node_modules/
 build/
 .env
+.env.prod
+.env.dev
 
 # Backend
 backend/node_modules/

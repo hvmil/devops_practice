@@ -3,7 +3,10 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const { Pool } = require("pg");
 
-dotenv.config();
+// Load environment variables in dev
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: ".env.dev" });
+}
 
 const app = express();
 app.use(cors());
@@ -13,10 +16,10 @@ console.log(process.env.DB_USER, process.env.DB_NAME, process.env.DB_PASSWORD);
 
 // PostgreSQL pool
 const pool = new Pool({
-  user: process.env.POSTGRES_USER || 'postgres',
-  host: process.env.POSTGRES_HOST || 'db',  // <-- IMPORTANT
-  database: process.env.POSTGRES_DB || 'mydb',
-  password: process.env.POSTGRES_PASSWORD || 'postgres',
+  user: process.env.POSTGRES_USER,
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DB,
+  password: process.env.POSTGRES_PASSWORD,
   port: 5432,
 });
 pool.connect((err, client, release) => {
