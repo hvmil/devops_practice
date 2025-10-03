@@ -25,6 +25,7 @@ const pool = new Pool({
   database: POSTGRES_DB,
   password: POSTGRES_PASSWORD,
   port: 5432,
+  ssl: { rejectUnauthorized: false }, // allows insecure connection, for testing only
 });
 
 // Ensure items table exists
